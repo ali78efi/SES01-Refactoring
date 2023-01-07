@@ -1,21 +1,27 @@
 package domain;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 
 public class Course {
 	private String id;
 	private String name;
 	private int units;
-	
-	List<Course> prerequisites;
+	private int section;
+	private Date examDate;
+	private List<Course> prerequisites;
 
-	public Course(String id, String name, int units) {
+	public Course(String id, String name, int units, int section, Date examDate) {
 		this.id = id;
 		this.name = name;
 		this.units = units;
-		prerequisites = new ArrayList<Course>();
+		this.section = section;
+		this.examDate = examDate;
+		this.prerequisites = new ArrayList<Course>();
 	}
+
+
 	
 	public void addPre(Course c) {
 		getPrerequisites().add(c);
@@ -33,6 +39,7 @@ public class Course {
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
 		sb.append(name);
+		sb.append("- " + section);
 		sb.append(" {");
 		for (Course pre : getPrerequisites()) {
 			sb.append(pre.getName());
@@ -54,8 +61,19 @@ public class Course {
 		return id;
 	}
 
+	public int getSection() { return section; }
+
+	public Date getExamDate() { return examDate; }
+
+	public void setExamDate(Date examDate) {
+		this.examDate = examDate;
+	}
+
 	public boolean equals(Object obj) {
-		Course other = (Course)obj;
-		return id.equals(other.id);
+		if(obj instanceof Course) {
+			Course other = (Course) obj;
+			return id.equals(other.id);
+		}
+		return false;
 	}
 }
