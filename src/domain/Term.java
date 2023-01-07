@@ -1,9 +1,6 @@
 package domain;
 
 import java.sql.Date;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
 
 public class Term {
 	private String name;
@@ -31,5 +28,11 @@ public class Term {
 		return startDate;
 	}
 	
-	
+	public boolean equals(Object obj) {
+		if(obj instanceof Term) {
+			Term other = (Term) obj;
+			return name.equals(other.name);
+		}
+		return false;
+	}
 }
