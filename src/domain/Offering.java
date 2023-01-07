@@ -1,4 +1,5 @@
 package domain;
+
 import java.util.Date;
 
 public class Offering {
@@ -38,5 +39,9 @@ public class Offering {
 
 	public int getSection() {
 		return section;
+	}
+
+	public boolean isSameCourse(Offering other) {
+		return getCourse().equals(other.getCourse());
 	}
 }
