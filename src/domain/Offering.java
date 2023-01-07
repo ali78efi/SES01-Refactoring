@@ -44,4 +44,9 @@ public class Offering {
 	public boolean isSameCourse(Offering other) {
 		return getCourse().equals(other.getCourse());
 	}
+
+	public boolean hasExamTimeConflict(Offering other) {
+		return getExamTime().equals(other.getExamTime());
+		
+	}
 }
